@@ -1,0 +1,7 @@
+{
+    "no_vehicle_nearby": "There is no vehicle nearby",
+    "already_cut_brakes": "The vehicle already has cut brakes",
+    "no_item": "You don't have the required item",
+    "brakes_cut": "The vehicle's brakes were cut",
+    "cut_progress": "Cutting brakes"
+}
