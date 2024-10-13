@@ -52,9 +52,9 @@ local cutBrakes = function(vehicle)
         label = locale('cut_progress'),
         canCancel = true,
         anim = {
-            dict = 'amb@world_human_vehicle_mechanic@male@base',
-            clip = 'base',
-            flag = 4
+            dict = 'amb@world_human_vehicle_mechanic@male@idle_a',
+            clip = 'idle_a',
+            flag = 0
         },
         prop = {
             model = `imp_prop_impexp_pliers_03`,
