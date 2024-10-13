@@ -95,7 +95,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('bryan_cut_brake_lights:client:cutBrakes', function(data)
-    local vehicle = lib.getClosestVehicle(GetEntityCoords(PlayerPedId()))
+    local vehicle = lib.getClosestVehicle(GetEntityCoords(PlayerPedId()), 3.0)
 
     if not vehicle then
         return lib.notify({
