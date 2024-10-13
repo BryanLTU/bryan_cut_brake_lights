@@ -4,15 +4,16 @@ local currentVehicle
 
 local walkPedToEngine = function(ped, vehicle)
     local engineCoords = GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, 'engine'))
-    local heading, forward = GetEntityHeading(vehicle), GetEntityForwardVector(vehicle)
-    local offsetCoords = vec3(engineCoords.x + forward.x, engineCoords.y + forward.y, engineCoords.z)
+    local forward = GetEntityForwardVector(vehicle)
+    local right = vec2(-forward.y, forward.x)
+    local offsetCoords = vec3(engineCoords.x + right.x, engineCoords.y + right.y, GetEntityCoords(ped).z - 0.95)
 
     if offsetCoords.x ~= 0.0 and offsetCoords.y ~= 0.0 and offsetCoords.z ~= 0.0 then
         TaskGoToCoordAnyMeans(ped, offsetCoords.x, offsetCoords.y, offsetCoords.z, 1.0, 0, false, 0, 0)
 
         local startTime = GetGameTimer()
 
-        while #(GetEntityCoords(ped) - offsetCoords) > 0.5 do
+        while #(GetEntityCoords(ped) - offsetCoords) > 1.0 do
             if GetGameTimer() - startTime > 5000 then
                 SetEntityCoords(ped, offsetCoords.x, offsetCoords.y, offsetCoords.z, false, false, false, false)
 
@@ -25,7 +26,7 @@ local walkPedToEngine = function(ped, vehicle)
         FreezeEntityPosition(ped, true)
         FreezeEntityPosition(ped, false)
 
-        SetEntityHeading(ped, heading)
+        SetEntityHeading(ped, (GetEntityHeading(vehicle) + 90.0) % 360.0)
     end
 end
 
